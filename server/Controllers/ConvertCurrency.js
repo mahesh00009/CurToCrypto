@@ -4,10 +4,6 @@ require('dotenv').config()
 
 const ConvertCurrency = async (req, res) => {
   const { amount, symbol, convert } = req.body;
-
-
-  
-
   try {
     const response = await axios.get('https://pro-api.coinmarketcap.com/v2/tools/price-conversion', {
       params: {

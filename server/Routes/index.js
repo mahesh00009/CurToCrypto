@@ -1,20 +1,23 @@
-
 const express = require('express');
-const getCryptoController = require('../Controllers/getCryptoController');
-const ConvertCurrency = require('../Controllers/ConvertCurrency');
+const cors = require('cors');
+const router = require('./Routes');
+require('dotenv').config();
 
-const router = express.Router()
+const app = express();
 
+const PORT = process.env.PORT || 3000;
+const HOST = process.env.HOST;
 
+app.use(express.json());
 
-router.get("/", (req,res) => {
-    res.end("hello from the other side")
-})
+app.use(cors({
+    origin: ["https://currencytocrypto.vercel.app", "http://localhost:3000"],
+    methods: ['POST', 'GET'],
+    credentials: true
+}));
 
+app.use('/', router);
 
-router.get('/topCryptos', getCryptoController);
-router.post('/convertCurrency', ConvertCurrency);
-
-
-module.exports = router
-
+app.listen(PORT, HOST, () => {
+    console.log(`Server is running on http://${HOST}:${PORT}`);
+});

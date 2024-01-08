@@ -6,17 +6,18 @@ require('dotenv').config();
 
 const app = express()
 
+app.use(cors({
+  origin:["https://currencytocrypto.vercel.app", "*", "https://vercel.com/mahesh-dhungels-projects/currencytocrypto/6CR1i9esgh5iYkPxgsW466Fcnfux"], 
+  methods : ['POST', 'GET'],
+  credentials: true
+}));
+
 const PORT = process.env.PORT || 3000; 
 const HOST = process.env.HOST
 
 
 app.use(express.json())
 
-app.use(cors({
-    origin:["https://currencytocrypto.vercel.app", "*", "https://vercel.com/mahesh-dhungels-projects/currencytocrypto/6CR1i9esgh5iYkPxgsW466Fcnfux"], 
-    methods : ['POST', 'GET'],
-    credentials: true
-  }));
   
 
 app.use('/', router)
