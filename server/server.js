@@ -13,7 +13,9 @@ const HOST = process.env.HOST
 app.use(express.json())
 
 app.use(cors({
-    origin: "*",
+    origin:["https://currencytocrypto.vercel.app", "*", "https://vercel.com/mahesh-dhungels-projects/currencytocrypto/6CR1i9esgh5iYkPxgsW466Fcnfux"], 
+    methods : ['POST', 'GET'],
+    credentials: true
   }));
   
 
